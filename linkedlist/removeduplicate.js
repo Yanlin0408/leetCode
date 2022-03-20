@@ -13,9 +13,10 @@ class LinkedList {
     }
     for (const value of values) {
       current.next = new LinkedList(value);
-    //   console.log(current);
       current = current.next;
       // 这里 current 先被改了 next，然后再 overwrite current
+      // 整个 linkedList 就是这么整出来的
+      // 所以下面也应该一样
     }
     return this;
   }
@@ -39,12 +40,13 @@ function removeDuplicatesFromLinkedList(linkedList) {
 
         console.log(currentNode);
         // currentNode.next = nextNode;
-          // 为什么？不能把 47 行这句话写在后面？
-          // 因为这里我定死了，currentNote.next 就是 之前得出来的 nextNote，
-          // 所以外层的 while 不管怎么跑，currentNote.next 永远等于原来的 nextNode
-          // 所以，29 行的 nextNode = 原来的 nextNode, 并且 nextNode.next = 原来的 nextNode，因为我前面定死了
-          // 所以，nextNode 在 32 行永远等于上一次循环里的它自己。
-          // while loop 永远跑不完
+          
+        // 为什么？不能把 47 行这句话写在后面？
+        // 因为这里我定死了，currentNote.next 就是 之前得出来的 nextNote，
+        // 所以外层的 while 不管怎么跑，currentNote.next 永远等于原来的 nextNode
+        // 所以，29 行的 nextNode = 原来的 nextNode, 并且 nextNode.next = 原来的 nextNode，因为我前面定死了
+        // 所以，nextNode 在 32 行永远等于上一次循环里的它自己。
+        // while loop 永远跑不完
     }
       
     return linkedList;
